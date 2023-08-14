@@ -106,6 +106,29 @@ router.get('/getVideos', async (req, res) => {
         })
     }
 })
+router.get('/getVideos/:videoId', async (req, res) => {
+    const videoId = req.params.videoId;
+
+    try {
+        const response = await VideoModal.findById(videoId);
+
+        if (response) {
+            res.status(200).json({
+                message: "Fetch Video Successfully",
+                data: response
+            });
+        } else {
+            res.json({
+                message: "Video Not Found"
+            });
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "Failed to Fetch Video",
+            errorDescription: err.message
+        });
+    }
+});
 
 router.get('/myvideos',AuthincationMiddleware,async(req,res)=>{
     let filter={PubilsherId: req.User.id}
