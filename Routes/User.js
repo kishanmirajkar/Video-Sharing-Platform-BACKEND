@@ -5,7 +5,7 @@ let bcrypt = require('bcrypt')
 let jwt = require('jsonwebtoken')
 let multer = require('multer')
 let Path = require('path')
-let SecretKey = "MeTube@"
+let SecretKey = "VSP2023"
 let cors=require('cors');
 router.use(cors())
 let Storage = multer.diskStorage({
